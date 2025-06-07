@@ -1,0 +1,136 @@
+.formContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.blogPostForm {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.formGroup {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  flex: 0 0 150px;
+  padding-right: 20px;
+  text-align: right;
+  font-size: 16px;
+  color: #333333;
+  line-height: 38px;
+}
+
+.formGroup input,
+.formGroup textarea {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  color: #333333;
+}
+
+.formGroup textarea {
+  min-height: 200px;
+  resize: vertical;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.errorInput {
+  border-color: #FF0000 !important;
+}
+
+.error {
+  color: #FF0000;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-left: 150px;
+  flex: 1;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-left: 150px;
+}
+
+.submitButton {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submitButton:hover {
+  background-color: #0056b3;
+}
+
+.submitButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Tablet and Mobile styles */
+@media (max-width: 1199px) {
+  .formContainer {
+    max-width: 100%;
+    padding: 15px;
+  }
+  
+  .blogPostForm {
+    padding: 20px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .formGroup {
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+
+  .formGroup label {
+    flex: none;
+    text-align: left;
+    padding-right: 0;
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    font-size: 14px;
+  }
+
+  .error {
+    margin-left: 0;
+    font-size: 12px;
+  }
+
+  .buttonContainer {
+    padding-left: 0;
+    margin-top: 20px;
+  }
+
+  .submitButton {
+    width: 100%;
+    padding: 12px;
+  }
+}

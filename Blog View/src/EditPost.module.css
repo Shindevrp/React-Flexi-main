@@ -1,0 +1,23 @@
+.editPost {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.editPost h1 {
+  font-size: 32px;
+  color: #333333;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .editPost {
+    padding: 15px;
+  }
+
+  .editPost h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}
