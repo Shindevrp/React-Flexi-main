@@ -1,9 +1,10 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import styles from './BlogPostDetail.module.css';
 
-const BlogPostDetail = ({ posts }) => {
+const BlogPostDetail = ({ posts, onDelete }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const blogPost = posts.find(post => post.id === id);
 
   if (!blogPost) {
@@ -15,14 +16,30 @@ const BlogPostDetail = ({ posts }) => {
     day: 'numeric',
     year: 'numeric'
   });
+
+  const handleBack = () => navigate(-1);
+  const handleDelete = () => {
+    if (window.confirm('Are you sure you want to delete this post?')) {
+      onDelete(id);
+    }
+  };
+
   return (
     <article className={styles.blogPostDetail}>
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.title}>{blogPost.title}</h1>
-          <Link to={`/edit/${id}`} className={styles.editButton}>
-            Edit Post
-          </Link>
+          <div className={styles.buttonGroup}>
+            <Link to={`/edit/${id}`} className={styles.editButton}>
+              Edit Post
+            </Link>
+            <button onClick={handleDelete} style={{background: '#dc3545', color: '#fff', border: 'none', borderRadius: '4px', padding: '10px 20px', cursor: 'pointer'}}>
+              Delete Post
+            </button>
+            <button onClick={handleBack} style={{background: '#6c757d', color: '#fff', border: 'none', borderRadius: '4px', padding: '10px 20px', cursor: 'pointer'}}>
+              Back
+            </button>
+          </div>
         </div>
         <p className={styles.author}>By {blogPost.author}</p>
         <p className={styles.date}>Published on {formattedDate}</p>

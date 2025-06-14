@@ -65,6 +65,11 @@ const App = () => {
     navigate('/');
   };
 
+  const handleDeletePost = (id) => {
+    setPosts(posts.filter(post => post.id !== id));
+    navigate('/');
+  };
+
   const getPost = (id) => posts.find(post => post.id === id);
 
   return (
@@ -84,7 +89,7 @@ const App = () => {
         />
         <Route 
           path="/posts/:id" 
-          element={<BlogPostDetail posts={posts} />} 
+          element={<BlogPostDetail posts={posts} onDelete={handleDeletePost} />} 
         />
         <Route 
           path="/create" 

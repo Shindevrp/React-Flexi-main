@@ -18,6 +18,53 @@
   margin-bottom: 20px;
 }
 
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.buttonGroup button,
+.buttonGroup a {
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  font-size: 15px;
+  padding: 10px 22px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  margin: 0;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.buttonGroup .editButton {
+  background: #007bff;
+  color: #fff;
+  font-weight: 500;
+}
+.buttonGroup .editButton:hover {
+  background: #0056b3;
+}
+
+.buttonGroup button:nth-child(2) {
+  background: #dc3545;
+  color: #fff;
+  font-weight: 500;
+}
+.buttonGroup button:nth-child(2):hover {
+  background: #a71d2a;
+}
+
+.buttonGroup button:nth-child(3) {
+  background: #343a40;
+  color: #fff;
+  font-weight: 500;
+}
+.buttonGroup button:nth-child(3):hover {
+  background: #23272b;
+}
+
 .title {
   font-size: 28px;
   font-weight: bold;
