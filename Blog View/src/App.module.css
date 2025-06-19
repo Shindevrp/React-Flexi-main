@@ -23,18 +23,40 @@
   color: #007BFF;
 }
 
-.createButton {
-  background-color: #007BFF;
-  color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.2s;
+.createPostBar {
+  width: 100%;
+  max-width: 1200px;
+  margin: 80px auto 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px 20px 20px;
+  box-sizing: border-box;
 }
 
+.createButton {
+  background: linear-gradient(90deg, #0055aa 0%, #66aaff 100%);
+  color: #fff !important;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 18px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: none;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+  outline: none;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.createButton:focus,
 .createButton:hover {
-  background-color: #0056b3;
+  background: linear-gradient(90deg, #003366 0%, #0055aa 100%);
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(0, 85, 170, 0.15);
+  outline: 2px solid #66aaff;
+  outline-offset: 2px;
 }
 
 .container {
@@ -61,5 +83,17 @@
 
   .container {
     padding: 15px;
+  }
+
+  .createPostBar {
+    margin-top: 40px;
+    padding: 0 10px 10px 10px;
+  }
+
+  .createButton {
+    width: 100%;
+    font-size: 16px;
+    padding: 14px 0;
+    text-align: center;
   }
 }
