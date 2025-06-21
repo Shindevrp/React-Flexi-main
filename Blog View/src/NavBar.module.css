@@ -1,0 +1,130 @@
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #003366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  font-family: 'Roboto', Arial, sans-serif;
+  padding: 0 40px;
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+.links {
+  display: flex;
+  gap: 20px;
+}
+.links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  outline: none;
+  transition: color 0.2s;
+}
+.links a:focus, .links a:hover {
+  color: #66aaff;
+  outline: 2px solid #66aaff;
+  outline-offset: 2px;
+}
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  outline: none;
+  margin-left: 20px;
+  transition: color 0.2s;
+}
+.hamburger:focus {
+  color: #66aaff;
+  outline: 2px solid #66aaff;
+  outline-offset: 2px;
+}
+.mobileMenu {
+  display: none;
+}
+.createButton {
+  background: #66aaff;
+  color: #fff !important;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  margin-left: 20px;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+  border: none;
+  display: inline-block;
+}
+.createButton:focus, .createButton:hover {
+  background: #0055aa;
+  color: #fff !important;
+  outline: 2px solid #66aaff;
+  outline-offset: 2px;
+}
+@media (max-width: 768px) {
+  .navBar {
+    padding: 0 16px;
+  }
+  .links {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+  .mobileMenu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    background: #fff;
+    color: #003366;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 999;
+    animation: slideDown 0.3s ease;
+  }
+  .mobileMenu a {
+    color: #003366;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    outline: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .mobileMenu a:focus, .mobileMenu a:hover {
+    background: #e6f0ff;
+    color: #0055aa;
+    outline: 2px solid #66aaff;
+    outline-offset: 2px;
+  }
+  .mobileMenu .createButton {
+    background: #66aaff;
+    color: #fff !important;
+    margin: 10px 20px;
+    border-radius: 4px;
+    font-size: 18px;
+    padding: 16px;
+    text-align: center;
+    display: block;
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

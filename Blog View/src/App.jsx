@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import BlogPostList from './BlogPostList';
 import BlogPostDetail from './BlogPostDetail';
 import CreatePost from './CreatePost';
 import EditPost from './EditPost';
 import styles from './App.module.css';
+import Layout from './Layout';
 
 const initialPosts = [
   {
@@ -73,11 +74,10 @@ const App = () => {
   const getPost = (id) => posts.find(post => post.id === id);
 
   return (
-    <div className={styles.app}>
-      <nav className={styles.nav}>
-        <Link to="/" className={styles.homeLink}>Blog Posts</Link>
-        <Link to="/create" className={styles.createButton}>Create New Post</Link>
-      </nav>
+    <Layout>
+      <div className={styles.createPostBar}>
+        <Link to="/create" className={styles.createButton}>+ Create New Post</Link>
+      </div>
       <Routes>
         <Route 
           path="/" 
@@ -100,7 +100,7 @@ const App = () => {
           element={<EditPost onSubmit={handleUpdatePost} getPost={getPost} />} 
         />
       </Routes>
-    </div>
+    </Layout>
   );
 };
 
