@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import styles from './BlogPostDetail.module.css';
+import CommentList from './CommentList';
+import CommentForm from './CommentForm';
+
+const getLocalComments = (postId) => {
+  const data = localStorage.getItem(`comments_${postId}`);
+  return data ? JSON.parse(data) : [];
+};
 
 const BlogPostDetail = ({ posts, onDelete }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const blogPost = posts.find(post => post.id === id);
+  const [comments, setComments] = useState(() => getLocalComments(id));
+
+  useEffect(() => {
+    setComments(getLocalComments(id));
+  }, [id]);
+
+  const handleAddComment = (comment) => {
+    const updated = [...comments, comment];
+    setComments(updated);
+    localStorage.setItem(`comments_${id}` , JSON.stringify(updated));
+  };
 
   if (!blogPost) {
     return <p className={styles.notFound}>Blog post not found.</p>;
@@ -47,6 +65,11 @@ const BlogPostDetail = ({ posts, onDelete }) => {
           className={styles.content}
           dangerouslySetInnerHTML={{ __html: blogPost.content }}
         />
+        <section className={styles.commentsSection}>
+          <h2 className={styles.commentsTitle}>Comments</h2>
+          <CommentList comments={comments} />
+          <CommentForm onSubmit={handleAddComment} isLoggedIn={false} />
+        </section>
       </div>
     </article>
   );
