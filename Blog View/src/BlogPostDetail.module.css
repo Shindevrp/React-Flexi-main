@@ -139,6 +139,18 @@
   margin-top: 40px;
 }
 
+.commentsSection {
+  margin-top: 40px;
+  padding: 24px 0 0 0;
+  border-top: 1.5px solid #e0e0e0;
+}
+.commentsTitle {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 18px;
+}
+
 /* Tablet styles */
 @media (min-width: 769px) and (max-width: 1199px) {
   .container {
@@ -191,5 +203,17 @@
 
   .content h2 {
     font-size: 28px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .commentsSection {
+    margin-top: 28px;
+    padding-top: 14px;
+  }
+  .commentsTitle {
+    font-size: 1.15em;
+    margin-bottom: 12px;
   }
 }
