@@ -24,6 +24,14 @@
   display: flex;
   gap: 20px;
 }
+/* SearchBar wrapper for desktop and mobile */
+.searchBarWrapper {
+  margin-left: auto;
+  margin-right: 16px;
+  min-width: 200px;
+  max-width: 320px;
+  flex: 0 0 auto;
+}
 .links a {
   color: #fff;
   text-decoration: none;
@@ -81,6 +89,12 @@
   }
   .links {
     display: none;
+  }
+  .searchBarWrapper {
+    min-width: 0;
+    max-width: none;
+    flex: 1 1 auto;
+    margin-right: 8px;
   }
   .hamburger {
     display: block;
