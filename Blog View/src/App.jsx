@@ -6,6 +6,7 @@ import CreatePost from './CreatePost';
 import EditPost from './EditPost';
 import styles from './App.module.css';
 import Layout from './Layout';
+import SearchBar from './SearchBar';
 
 const initialPosts = [
   {
@@ -39,6 +40,8 @@ const initialPosts = [
 
 const App = () => {
   const [posts, setPosts] = useState(initialPosts);
+  const [searchResults, setSearchResults] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   const handleCreatePost = (formData) => {
@@ -73,6 +76,29 @@ const App = () => {
 
   const getPost = (id) => posts.find(post => post.id === id);
 
+  // Search logic
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    if (!query.trim()) {
+      setSearchResults(null);
+      return;
+    }
+    const lowerQuery = query.toLowerCase();
+    const filtered = posts.filter(post =>
+      post.title.toLowerCase().includes(lowerQuery) ||
+      post.content.toLowerCase().includes(lowerQuery)
+    );
+    setSearchResults(filtered);
+  };
+
+  // Expose search handler for NavBar
+  useEffect(() => {
+    window.handleSearchFromNavBar = handleSearch;
+    return () => {
+      window.handleSearchFromNavBar = null;
+    };
+  }, [posts]);
+
   return (
     <Layout>
       <div className={styles.createPostBar}>
@@ -83,7 +109,16 @@ const App = () => {
           path="/" 
           element={
             <div className={styles.container}>
-              <BlogPostList posts={posts} />
+              {/* Show search results if searching, else all posts */}
+              {searchQuery ? (
+                <BlogPostList posts={searchResults || []} searchQuery={searchQuery} />
+              ) : (
+                <BlogPostList posts={posts} />
+              )}
+              {/* Show "No posts found" if searching and no results */}
+              {searchQuery && searchResults && searchResults.length === 0 && (
+                <p className={styles.noResults} aria-live="polite">No posts found.</p>
+              )}
             </div>
           } 
         />

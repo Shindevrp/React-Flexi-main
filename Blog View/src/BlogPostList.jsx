@@ -2,7 +2,7 @@ import React from 'react';
 import BlogPostItem from './BlogPostItem';
 import styles from './BlogPostList.module.css';
 
-const BlogPostList = ({ posts }) => {
+const BlogPostList = ({ posts, searchQuery }) => {
   if (!posts || posts.length === 0) {
     return <p className={styles.empty}>No blog posts available.</p>;
   }
@@ -16,6 +16,7 @@ const BlogPostList = ({ posts }) => {
           summary={post.summary}
           date={post.date}
           url={post.url}
+          searchQuery={searchQuery}
         />
       ))}
     </div>

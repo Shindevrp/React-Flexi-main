@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './NavBar.module.css';
+import SearchBar from './SearchBar';
 
 const NavBar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,6 +35,10 @@ const NavBar = () => {
         <Link to="/" tabIndex={0}>Home</Link>
         <Link to="/blog" tabIndex={0}>Blog</Link>
         <Link to="/about" tabIndex={0}>About</Link>
+      </div>
+      {/* SearchBar in NavBar for desktop and mobile */}
+      <div className={styles.searchBarWrapper}>
+        <SearchBar onSearch={window.handleSearchFromNavBar} />
       </div>
       <button
         className={styles.hamburger}
